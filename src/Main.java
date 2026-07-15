@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -27,7 +29,7 @@ public class Main {
     }
 
     public static void checkDevice(int clientOS, int clientDeviceYear) {
-        int currentYear = 2026;
+        int currentYear = LocalDate.now().getYear();
         if (clientOS == 0 && clientDeviceYear == currentYear) {
             System.out.println("Установите версию приложения для iOS по ссылке");
         } else if (clientOS == 0 && clientDeviceYear != currentYear) {
@@ -43,13 +45,16 @@ public class Main {
         int deliveryDays = 1;
         if (deliveryDistance < 20) {
             System.out.println("Потребуется дней: " + deliveryDays);
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
+        }
+        if (deliveryDistance >= 20 && deliveryDistance < 60) {
             deliveryDays += 1;
             System.out.println("потребуется дней: " + deliveryDays);
-        } else if (deliveryDistance >= 60 && deliveryDistance <= 100) {
+        }
+        if (deliveryDistance >= 60 && deliveryDistance <= 100) {
             deliveryDays += 2;
             System.out.println("Потребуется дней " + deliveryDays);
-        } else {
+        }
+        if (deliveryDistance > 100){
             System.out.println("Доставки нет");
         }
         return  deliveryDays;
