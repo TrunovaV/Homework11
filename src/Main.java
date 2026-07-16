@@ -11,17 +11,21 @@ public class Main {
 
         System.out.println("Задача 2");
         int clientOS = 1;
-        int clientDeviseYear = 2020;
-        checkDevice(clientOS, clientDeviseYear);
+        int clientDeviсeYear = 2020;
+        checkDevice(clientOS, clientDeviсeYear);
 
         System.out.println("Задача 3");
         int deliveryDistance = 95;
-        deliveryDays(deliveryDistance);
+        int days = calculateDeliveryDays(deliveryDistance);
+        if (days == -1) {
+            System.out.println("Доставки нет");
+        } else {
+            System.out.println("Потребуется дней: " + days);}
 
     }
 
     public static void checkYear(int year) {
-        if ((year > 1584) && (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
+        if ((year > 1584 && year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
@@ -41,19 +45,17 @@ public class Main {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
         }
     }
-    public static int deliveryDays (int deliveryDistance) {
+    public static int calculateDeliveryDays (int deliveryDistance) {
+        if (deliveryDistance > 100 || deliveryDistance < 0) return -1;
+
         int deliveryDays = 1;
-        if (deliveryDistance > 0 && deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + deliveryDays);
+        if (deliveryDistance < 20) {
         } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
             deliveryDays += 1;
-            System.out.println("потребуется дней: " + deliveryDays);
         } else if (deliveryDistance >= 60 && deliveryDistance <= 100) {
             deliveryDays += 2;
-            System.out.println("Потребуется дней " + deliveryDays);
-        } else {
-            System.out.println("Доставки нет");
         }
         return  deliveryDays;
+
     }
 }
